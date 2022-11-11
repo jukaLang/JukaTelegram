@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1
 
-FROM node:16.16.1
+FROM alpine:3.15
+ENV NODE_VERSION 19.0.1
+
 ENV NODE_ENV=production
 
 WORKDIR /app
