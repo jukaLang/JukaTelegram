@@ -1,5 +1,26 @@
 {
+  "name": "juka-telegram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "16.16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jukaLang/JukaTelegram.git"
+  },
+  "homepage": "https://jukalang.com",
   "dependencies": {
     "node-telegram-bot-api": "^0.60.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
+
