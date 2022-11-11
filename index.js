@@ -22,6 +22,6 @@ bot.onText(/\/[Jj]uka (.+)/, (msg, match) => {
 
 bot.onText(/\/start/, (msg) => {
 
-bot.sendMessage(msg.chat.id, "Welcome to JukaBot. To run Juka, type '/juka code' where code is the function you want to run!");
+bot.sendMessage(msg.chat.id, "Welcome to <b>JukaBot</b>. Visit us at <a href="https://jukalang.com">https://jukalang.com</a>. To run Juka, type <pre>/juka code</pre> where code is the function you want to run! Example: <code>func main() = { printLine(\"Hello World\"); }</code>",{parse_mode : "HTML"});
 
 });
