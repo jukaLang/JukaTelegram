@@ -1,13 +1,13 @@
 const TelegramBot = require('node-telegram-bot-api');
-
+const axios = require('axios');
 // replace the value below with the Telegram token you receive from @BotFather
-const token = process.env.TELEGRAM_KEY || 'not set';
+const token = process.env.TELEGRAM_KEY || '';
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 
-// Matches "/juka [whatever]"
-bot.onText(/\/juka (.+)/, (msg, match) => {
+
+bot.onText(/\/[Jj]uka (.+)/, (msg, match) => {
   // 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
@@ -15,30 +15,13 @@ bot.onText(/\/juka (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   const resp = match[1]; // the captured "whatever"
 
-  // send back the matched "whatever" to the chat
-
-  let jukaResponse = await axios('https://api.jukalang.com/'+resp);
-  bot.sendMessage(chatId, jukaResponse);
+  // send back using Juka Api
+	//console.log(resp);
+  axios('https://api.jukalang.com/'+resp).then((jukaResponse) => bot.sendMessage(chatId, "<b>Output: </b>"+jukaResponse.data['output'],{parse_mode : "HTML"}));
 });
 
-bot.onText(/\/echo (.+)/, (msg, match) => {
-  // 'msg' is the received Message from Telegram
-  // 'match' is the result of executing the regexp above on the text content
-  // of the message
+bot.onText(/\/start/, (msg) => {
 
-  const chatId = msg.chat.id;
-  const resp = match[1]; // the captured "whatever"
+bot.sendMessage(msg.chat.id, "Welcome to JukaBot. To run Juka, type '/juka code' where code is the function you want to run!");
 
-  // send back the matched "whatever" to the chat
-
-  bot.sendMessage(chatId, resp);
-});
-
-// Listen for any kind of message. There are different kinds of
-// messages.
-bot.on('message', (msg) => {
-  const chatId = msg.chat.id;
-
-  // send a message to the chat acknowledging receipt of their message
-  bot.sendMessage(chatId, 'Received your message');
 });

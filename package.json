@@ -8,15 +8,13 @@
     "dev": "nodemon index.js",
     "start": "node index.js"
   },
-  "engines": {
-    "node": "16.16"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jukaLang/JukaTelegram.git"
   },
   "homepage": "https://jukalang.com",
   "dependencies": {
+    "axios": "^0.27.2",
     "node-telegram-bot-api": "^0.60.0"
   },
   "devDependencies": {
