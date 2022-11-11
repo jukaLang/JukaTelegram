@@ -1,7 +1,9 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:3.15
-ENV NODE_VERSION 19.0.1
+# specify the node base image with your desired version node:<version>
+FROM node:16
+# replace this with your application's default port
+EXPOSE 8888
 
 ENV NODE_ENV=production
 
